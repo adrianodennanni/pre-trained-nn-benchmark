@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    down (4.5.0)
+    parallel (1.12.1)
+    rmagick (2.16.0)
+    ruby-progressbar (1.10.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  down
+  parallel
+  rmagick
+  ruby-progressbar
+
+BUNDLED WITH
+   1.16.4
