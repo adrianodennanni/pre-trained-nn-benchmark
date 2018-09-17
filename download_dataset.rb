@@ -81,8 +81,10 @@ puts 'Downloading images...'
 dir_path = "./dataset"
 unless Dir.exist?(dir_path)
   Dir.mkdir(dir_path)
+  Dir.mkdir("#{dir_path}/train")
+  Dir.mkdir("#{dir_path}/validation")
+  Dir.mkdir("#{dir_path}/test")
   categories_labels.keys.each do |category|
-    Dir.mkdir("#{dir_path}/#{category}")
     Dir.mkdir("#{dir_path}/train/#{category}")
     Dir.mkdir("#{dir_path}/validation/#{category}")
     Dir.mkdir("#{dir_path}/test/#{category}")
