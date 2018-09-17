@@ -105,3 +105,4 @@ venv.bak/
 
 csv_files_download/
 dataset/
+checkpoints/
