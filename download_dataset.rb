@@ -83,9 +83,9 @@ unless Dir.exist?(dir_path)
   Dir.mkdir(dir_path)
   categories_labels.keys.each do |category|
     Dir.mkdir("#{dir_path}/#{category}")
-    Dir.mkdir("#{dir_path}/#{category}/train")
-    Dir.mkdir("#{dir_path}/#{category}/validation")
-    Dir.mkdir("#{dir_path}/#{category}/test")
+    Dir.mkdir("#{dir_path}/train/#{category}")
+    Dir.mkdir("#{dir_path}/validation/#{category}")
+    Dir.mkdir("#{dir_path}/test/#{category}")
   end
 end
 
@@ -96,7 +96,7 @@ files_count = Hash.new(0)
 urls.each do |label, datasets|
   category = categories_labels.key(label)
   datasets.each do |dataset, urls|
-    Parallel.each(urls, progress: "Downloading and resizing pictures: #{category}, #{dataset}", in_threads: 20) do |url|
+    Parallel.each(urls, progress: "Downloading and resizing pictures: #{dataset}, #{category}", in_processes: 40) do |url|
       temp_file = Down.open(url, max_redirects: 0)
 
       next unless temp_file.data[:status].to_i == 200
@@ -104,8 +104,8 @@ urls.each do |label, datasets|
       smaller_dimension = [image.columns, image.rows].min
       ratio = fixed_lenght/smaller_dimension
       image = image.scale(ratio)
-      image.write("#{dir_path}/#{category}/#{dataset}/#{url[/\w+_\w+/]}.jpg")
-      files_count["#{category}/#{dataset}"] += 1
+      image.write("#{dir_path}/#{dataset}/#{category}/#{url[/\w+_\w+/]}.jpg")
+      files_count["#{dataset}/#{category}"] += 1
     rescue StandardError
     end
   end
