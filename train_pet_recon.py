@@ -39,7 +39,7 @@ BATCH_SIZE = 16
 N_CLASSES = 3
 TRAIN_DATASET_PATH = './dataset/train'
 VALIDATION_DATASET_PATH = './dataset/validation'
-CHECKPOINT_DIRECTORY = f'./checkpoints/pet_classifier/{model}_{mode}'
+CHECKPOINT_DIRECTORY = './checkpoints/pet_classifier/{0}_{1}'.format(model, mode)
 SAVE_CHECKPOINT_PATH = CHECKPOINT_DIRECTORY + '/{epoch:02d}_{val_acc:.4f}.h5'
 
 if not os.path.exists(CHECKPOINT_DIRECTORY):
@@ -91,7 +91,7 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     mode='max'
 )
 tensorboard_callback = tf.keras.callbacks.TensorBoard(
-    log_dir=f'./logs/pet_classifier/{model}_{mode}',
+    log_dir='./logs/pet_classifier/{0}_{1}'.format(model, mode),
     histogram_freq=0,
     batch_size=BATCH_SIZE
 )
@@ -121,7 +121,7 @@ if Path(CHECKPOINT_DIRECTORY).exists():
     highest_acc = val_accuracy_array.index(max(val_accuracy_array))
     INITIAL_EPOCH = epoch_number_array[highest_acc]
     model_checkpoint_callback.best = val_accuracy_array[highest_acc]
-    model.load_weights('./checkpoints/pet_classifier/' + f'{model}_{mode}/' + file_name_array[highest_acc])
+    model.load_weights('./checkpoints/pet_classifier/' + '{0}_{1}/'.format(model, mode) + file_name_array[highest_acc])
 else:
   os.makedirs(CHECKPOINT_DIRECTORY)
   INITIAL_EPOCH = 0
