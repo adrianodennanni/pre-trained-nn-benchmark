@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 require 'down' # Easy file download
 require 'fileutils'
 require 'parallel' # Easy multi-thread processing
