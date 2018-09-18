@@ -2,10 +2,10 @@ import tensorflow as tf
 
 class ModelTools:
 
-  def create_model(n_classes):
+  def create_model(n_classes, weights):
     trained_model = tf.keras.applications.xception.Xception(
         include_top=False,
-        weights=None,
+        weights=weights,
         input_shape=[100, 100, 3],
         pooling='max')
 

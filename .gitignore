@@ -108,3 +108,4 @@ pet_dataset/
 captcha_dataset/
 checkpoints/
 logs/
+*.tfrecord

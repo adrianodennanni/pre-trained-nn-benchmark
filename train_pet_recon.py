@@ -14,19 +14,22 @@ else:
   model_name = sys.argv[1]
   mode  = sys.argv[2]
 
+N_CLASSES = 3
+
 # Load the corresponding model
 if model_name == 'xception':
+  from pet_recon_xception import ModelTools as model_tools
   if mode == 'pre_trained':
-    from pet_recon_xception_pre_trained import ModelTools as model_tools
+    model = model_tools.create_model(N_CLASSES, 'imagenet')
   elif mode == 'random_init':
-    from pet_recon_xception_random_init import ModelTools as model_tools
+    from pet_recon_xception import ModelTools as model_tools
+    model = model_tools.create_model(N_CLASSES, None)
 else:
   print('Model ' + model_name + ' could not be found.')
   sys.exit()
 
-TOTAL_EPOCHS = 30
+TOTAL_EPOCHS = 10
 BATCH_SIZE = 16
-N_CLASSES = 3
 TRAIN_DATASET_PATH = './pet_dataset/train'
 VALIDATION_DATASET_PATH = './pet_dataset/validation'
 CHECKPOINT_DIRECTORY = './checkpoints/pet_classifier/{0}_{1}'.format(model_name, mode)
@@ -90,8 +93,6 @@ reduce_lr_callback = tf.keras.callbacks.ReduceLROnPlateau(
     patience=3,
     min_lr=1e-6
 )
-
-model = model_tools.create_model(N_CLASSES)
 
 # Loads best weights if avaiable
 if Path(CHECKPOINT_DIRECTORY).exists():
