@@ -20,16 +20,6 @@ if model_name == 'xception':
     from pet_recon_xception_pre_trained import ModelTools as model_tools
   elif mode == 'random_init':
     from pet_recon_xception_random_init import ModelTools as model_tools
-elif model_name == 'inception_res_net_v2':
-  if mode == 'pre_trained':
-    from pet_recon_inception_res_net_v2_pre_trained import ModelTools as model_tools
-  elif mode == 'random_init':
-    from pet_recon_inception_res_net_v2_random_init import ModelTools as model_tools
-elif model_name == 'mobile_net':
-  if mode == 'pre_trained':
-    from pet_recon_mobile_net_pre_trained import ModelTools as model_tools
-  elif mode == 'random_init':
-    from pet_recon_mobile_net_random_init import ModelTools as model_tools
 else:
   print('Model ' + model_name + ' could not be found.')
   sys.exit()

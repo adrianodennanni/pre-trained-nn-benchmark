@@ -11,55 +11,7 @@ Benchmark comparing pre-trained vs random-init Neural Networks
 
 ## Results
 
-### Pet Classifier
-
-#### Xception
-
-##### Pre-trained
-| Epoch | Validation Accuracy |
-|:-----:|:-------------------:|
-|     1 |              00.00% |
-|     2 |              00.00% |
-|     3 |              00.00% |
-|     4 |              00.00% |
-|     5 |              00.00% |
-|    10 |              00.00% |
-
-
-##### Random-init
-| Epoch | Validation Accuracy |
-|:-----:|:-------------------:|
-|     1 |              00.00% |
-|     2 |              00.00% |
-|     3 |              00.00% |
-|     4 |              00.00% |
-|     5 |              00.00% |
-|    10 |              00.00% |
-
-#### Inception ResNet v2
-
-##### Pre-trained
-| Epoch | Validation Accuracy |
-|:-----:|:-------------------:|
-|     1 |              00.00% |
-|     2 |              00.00% |
-|     3 |              00.00% |
-|     4 |              00.00% |
-|     5 |              00.00% |
-|    10 |              00.00% |
-
-
-##### Random-init
-| Epoch | Validation Accuracy |
-|:-----:|:-------------------:|
-|     1 |              00.00% |
-|     2 |              00.00% |
-|     3 |              00.00% |
-|     4 |              00.00% |
-|     5 |              00.00% |
-|    10 |              00.00% |
-
-#### MobileNet
+### Pet Classifier (Xception)
 
 ##### Pre-trained
 | Epoch | Validation Accuracy |
