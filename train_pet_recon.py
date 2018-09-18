@@ -56,8 +56,7 @@ train_batches = train_generator.flow_from_directory(
     batch_size=BATCH_SIZE,
     directory=TRAIN_DATASET_PATH,
     target_size=[100, 100],
-    class_mode='categorical',
-    shuffle=True
+    class_mode='categorical'
 )
 
 val_generator = tf.keras.preprocessing.image.ImageDataGenerator(
