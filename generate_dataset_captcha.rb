@@ -14,7 +14,7 @@ unless Dir.exist?(dir_path)
 end
 
 # Function for generate and save captchas
-def save_random_captcha(text)
+def save_random_captcha(text, dataset)
   image = Magick::Image.new(160, 80)
   image.format = "jpg"
   image.gravity = Magick::CenterGravity
