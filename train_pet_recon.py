@@ -39,7 +39,7 @@ BATCH_SIZE = 16
 N_CLASSES = 3
 TRAIN_DATASET_PATH = './dataset/train'
 VALIDATION_DATASET_PATH = './dataset/validation'
-CHECKPOINT_DIRECTORY = './checkpoints/pet_classifier/{0}_{1}'.format(model, mode)
+CHECKPOINT_DIRECTORY = './checkpoints/pet_classifier/{0}_{1}'.format(model_name, mode)
 SAVE_CHECKPOINT_PATH = CHECKPOINT_DIRECTORY + '/{epoch:02d}_{val_acc:.4f}.h5'
 
 if not os.path.exists(CHECKPOINT_DIRECTORY):
