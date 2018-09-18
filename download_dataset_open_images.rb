@@ -78,7 +78,7 @@ puts 'Got all image URLs.'
 
 # Download the images
 puts 'Downloading images...'
-dir_path = "./dataset"
+dir_path = "./pet_dataset"
 unless Dir.exist?(dir_path)
   Dir.mkdir(dir_path)
   Dir.mkdir("#{dir_path}/train")

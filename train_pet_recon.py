@@ -37,8 +37,8 @@ else:
 TOTAL_EPOCHS = 30
 BATCH_SIZE = 16
 N_CLASSES = 3
-TRAIN_DATASET_PATH = './dataset/train'
-VALIDATION_DATASET_PATH = './dataset/validation'
+TRAIN_DATASET_PATH = './pet_dataset/train'
+VALIDATION_DATASET_PATH = './pet_dataset/validation'
 CHECKPOINT_DIRECTORY = './checkpoints/pet_classifier/{0}_{1}'.format(model_name, mode)
 SAVE_CHECKPOINT_PATH = CHECKPOINT_DIRECTORY + '/{epoch:02d}_{val_acc:.4f}.h5'
 
