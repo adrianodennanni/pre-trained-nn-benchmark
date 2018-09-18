@@ -11,27 +11,27 @@ if(len(sys.argv) != 3):
   print('Usage: python train_pet_recon.py model (pre-trained | random-init)')
   sys.exit()
 else:
-  model = sys.argv[1]
+  model_name = sys.argv[1]
   mode  = sys.argv[2]
 
 # Load the corresponding model
-if model == 'xception':
+if model_name == 'xception':
   if mode == 'pre_trained':
     from pet_recon_xception_pre_trained import ModelTools as model_tools
   elif mode == 'random_init':
     from pet_recon_xception_random_init import ModelTools as model_tools
-elif model == 'inception_res_net_v2':
+elif model_name == 'inception_res_net_v2':
   if mode == 'pre_trained':
     from pet_recon_inception_res_net_v2_pre_trained import ModelTools as model_tools
   elif mode == 'random_init':
     from pet_recon_inception_res_net_v2_random_init import ModelTools as model_tools
-elif model == 'mobile_net':
+elif model_name == 'mobile_net':
   if mode == 'pre_trained':
     from pet_recon_mobile_net_pre_trained import ModelTools as model_tools
   elif mode == 'random_init':
     from pet_recon_mobile_net_random_init import ModelTools as model_tools
 else:
-  print('Model ' + model + ' could not be found.')
+  print('Model ' + model_name + ' could not be found.')
   sys.exit()
 
 TOTAL_EPOCHS = 30
@@ -91,7 +91,7 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     mode='max'
 )
 tensorboard_callback = tf.keras.callbacks.TensorBoard(
-    log_dir='./logs/pet_classifier/{0}_{1}'.format(model, mode),
+    log_dir='./logs/pet_classifier/{0}_{1}'.format(model_name, mode),
     histogram_freq=0,
     batch_size=BATCH_SIZE
 )
@@ -121,7 +121,7 @@ if Path(CHECKPOINT_DIRECTORY).exists():
     highest_acc = val_accuracy_array.index(max(val_accuracy_array))
     INITIAL_EPOCH = epoch_number_array[highest_acc]
     model_checkpoint_callback.best = val_accuracy_array[highest_acc]
-    model.load_weights('./checkpoints/pet_classifier/' + '{0}_{1}/'.format(model, mode) + file_name_array[highest_acc])
+    model.load_weights('./checkpoints/pet_classifier/' + '{0}_{1}/'.format(model_name, mode) + file_name_array[highest_acc])
 else:
   os.makedirs(CHECKPOINT_DIRECTORY)
   INITIAL_EPOCH = 0
