@@ -108,11 +108,9 @@ model.fit(train_images,
           train_labels,
           epochs=2,
           verbose=1,
-          steps_per_epoch=int(2),
-          # steps_per_epoch=int(200000/BATCH_SIZE),
+          steps_per_epoch=int(200000/BATCH_SIZE),
           validation_data=(validation_images, validation_labels),
-          validation_steps=int(2),
-          # validation_steps=int(5000/BATCH_SIZE)
+          validation_steps=int(5000/BATCH_SIZE),
           initial_epoch=INITIAL_EPOCH,
           callbacks=[model_checkpoint_callback, tensorboard_callback, reduce_lr_callback]
           )
