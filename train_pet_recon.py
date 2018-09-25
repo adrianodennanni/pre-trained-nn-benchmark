@@ -22,13 +22,12 @@ if model_name == 'xception':
   if mode == 'pre_trained':
     model = model_tools.create_model(N_CLASSES, 'imagenet')
   elif mode == 'random_init':
-    from pet_recon_xception import ModelTools as model_tools
     model = model_tools.create_model(N_CLASSES, None)
 else:
   print('Model ' + model_name + ' could not be found.')
   sys.exit()
 
-TOTAL_EPOCHS = 10
+TOTAL_EPOCHS = 30
 BATCH_SIZE = 16
 TRAIN_DATASET_PATH = './pet_dataset/train'
 VALIDATION_DATASET_PATH = './pet_dataset/validation'

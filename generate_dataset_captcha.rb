@@ -34,19 +34,21 @@ def save_random_captcha(text, dataset)
   image = image.swirl(rand(15))
   image = image.radial_blur(rand(5))
   image = image.add_noise(Magick::ImpulseNoise)
+  image = image.wave(2 + rand(1), 20 + rand(10))
+  image = image.crop(0,0,160,80)
 
   File.write("./captcha_dataset/#{dataset}/#{text}.jpg", image.to_blob)
 end
 
 # Start saving the captcha_dataset
 texts = []
-(1..35_000).each { texts << SecureRandom.alphanumeric(6).upcase }
+(1..200_000).each { texts << SecureRandom.alphanumeric(6).upcase }
 Parallel.each(texts.uniq, in_processes: 30, progress: "Creating train captchas") { |text| save_random_captcha(text, 'train') }
 
 texts = []
-(1..2_000).each { texts << SecureRandom.alphanumeric(6).upcase }
+(1..5_000).each { texts << SecureRandom.alphanumeric(6).upcase }
 Parallel.each(texts.uniq, in_processes: 30, progress: "Creating validation captchas") { |text| save_random_captcha(text, 'validation') }
 
 texts = []
-(1..2_000).each { texts << SecureRandom.alphanumeric(6).upcase }
+(1..5_000).each { texts << SecureRandom.alphanumeric(6).upcase }
 Parallel.each(texts.uniq, in_processes: 30, progress: "Creating test captchas") { |text| save_random_captcha(text, 'test') }
