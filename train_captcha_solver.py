@@ -106,7 +106,7 @@ model.compile(optimizer = tf.keras.optimizers.Adam(),
 # Starts training the model
 model.fit(train_images,
           train_labels,
-          epochs=2,
+          epochs=30,
           verbose=1,
           steps_per_epoch=int(200000/BATCH_SIZE),
           validation_data=(validation_images, validation_labels),
