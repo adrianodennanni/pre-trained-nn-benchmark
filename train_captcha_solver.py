@@ -92,7 +92,7 @@ if Path(CHECKPOINT_DIRECTORY).exists():
     highest_acc = val_accuracy_array.index(max(val_accuracy_array))
     INITIAL_EPOCH = epoch_number_array[highest_acc]
     model_checkpoint_callback.best = val_accuracy_array[highest_acc]
-    model.load_weights('./checkpoints/captcha_solver/' + 'xception_{1}/'.format(mode) + file_name_array[highest_acc])
+    model.load_weights('./checkpoints/captcha_solver/' + mode + '/' + file_name_array[highest_acc])
 else:
   os.makedirs(CHECKPOINT_DIRECTORY)
   INITIAL_EPOCH = 0
