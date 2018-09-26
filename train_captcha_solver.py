@@ -23,7 +23,7 @@ def extract_and_parse(example):
 
 # Get parameters from command line
 if(len(sys.argv) != 2):
-  print('Usage: python train_captcha_solver.py (pre-trained | random-init)')
+  print('Usage: python train_captcha_solver.py (pre_trained | random_init)')
   sys.exit()
 else:
   mode  = sys.argv[1]

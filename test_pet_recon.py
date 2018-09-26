@@ -7,7 +7,7 @@ import tensorflow as tf
 
 # Get parameters from command line
 if(len(sys.argv) != 3):
-  print('Usage: python test_pet_recon.py model (pre-trained | random-init)')
+  print('Usage: python test_pet_recon.py model (pre_trained | random_init)')
   sys.exit()
 else:
   model_name = sys.argv[1]
